@@ -14,6 +14,7 @@ import './screens/login.dart';
 
 import './models/cart_model.dart';
 import './models/catalog_model.dart';
+import './models/user_model.dart';
 
 void main() {
   setupWindow();
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
         // CartModel is implemented as a ChangeNotifier, which calls for the use
         // of ChangeNotifierProvider. Moreover, CartModel depends
         // on CatalogModel, so a ProxyProvider is needed.
+        ChangeNotifierProvider<User>(create: (context) => User()),
         ChangeNotifierProxyProvider<CatalogModel, CartModel>(
           create: (context) => CartModel(),
           update: (context, catalog, cart) {
